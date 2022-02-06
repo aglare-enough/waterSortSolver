@@ -3,7 +3,7 @@ from model.Cups import Cups
 
 class Solver:
     res = []
-
+    mode = "RELEASE"
     def __init__(self):
         pass
 
@@ -25,7 +25,7 @@ class Solver:
                         continue
 
                     cls.res.append((i, j))
-                    print("add " + str(i) + "," + str(j))
+                    # print("add " + str(i) + "," + str(j))
                     if Solver.sort(newcups,depth+1):
                         return True
                     cls.res.pop()
@@ -35,10 +35,11 @@ class Solver:
     def output(cls, data):
         cups = Cups(data)
         print(cls.res)
-        print('--------------------------------')
-        print(data)
-        print('--------------------------------')
-        for act in cls.res:
-            cups.cups[act[0]].pour_into(cups.cups[act[1]])
-            cups.output_res()
+        if cls.mode == "DEBUG":
             print('--------------------------------')
+            print(data)
+            print('--------------------------------')
+            for act in cls.res:
+                cups.cups[act[0]].pour_into(cups.cups[act[1]])
+                cups.output_res()
+                print('--------------------------------')

@@ -61,7 +61,6 @@ class Cup:
         return True
 
 
-# TODO   水排序算法
 
 
 class Cups:
@@ -84,11 +83,9 @@ class Cups:
 
     def has_effective_action(self):
         for i in range(self.cupNum):
-            # j = i + 1
             for j in range(self.cupNum):
                 if self.cups[i].can_pour(self.cups[j]):
                     return True
-                j += 1
         return False
 
     def is_success(self) -> bool:

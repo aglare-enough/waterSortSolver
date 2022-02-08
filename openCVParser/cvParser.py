@@ -43,21 +43,25 @@ def glasses_coordinates(glass_img:np.ndarray) -> list:
     down_point = []
     for contour in contours:
         down_point.append(max(list(contour.reshape(-1, 2)), key=lambda item: item[1]))
+    for point in down_point:
+        point[1]+=500
     return down_point
 
 
 
 def water_color_lst(down_point:list, glass_img:np.ndarray) -> list:
     lst = []
+
     for coordinate in down_point:
         one_glass = []
         l, h = tuple(coordinate)
+        h -= 500
         for i in range(4):
             if judge_color(tuple(glass_img[h - 50 - 88 * i, l])) is not None:
                 one_glass.append(judge_color(tuple(glass_img[h - 50 - 88*i, l])))
             else:
                 continue
-        lst.append(one_glass[::-1])
+        lst.append(one_glass)
     return lst[::-1]
 
 
@@ -101,13 +105,25 @@ def judge_color(color:tuple) -> int:
         pass
 
 
+def parse():
+    img_path = "./img/cache.png"
+    # 调用上述函数
+    glass_img = glass_img_processing(img_path)
+    down_point = glasses_coordinates(glass_img)
+    print(water_color_lst(down_point, glass_img))
+    down_point.reverse()
+    return water_color_lst(down_point, glass_img),down_point
+
 
 if __name__ == "__main__":
     #传一个图片路径，图片大小和zad的手机截图一样的：1080*2340否则可能出现bug
-    img_path = "11.jpg"
+    img_path = "../img/cache.png"
 
     #调用上述函数
     glass_img = glass_img_processing(img_path)
     down_point = glasses_coordinates(glass_img)
+    print(down_point)
+    down_point.reverse()
+    print(down_point)
     print(water_color_lst(down_point, glass_img))
 

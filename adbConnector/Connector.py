@@ -27,6 +27,7 @@ class Connector:
         os.popen(f"adb shell input tap {x} {y}")
 
     # screen capture
-    def screencap(self):
-        os.popen("adb exec-out screencap -p > ../cache.png")
+    @classmethod
+    def screencap(cls):
+        os.popen(f"adb exec-out screencap -p > {os.path.abspath('../')}/img/cache.png")
         print("screen image has been saved in cache.png")

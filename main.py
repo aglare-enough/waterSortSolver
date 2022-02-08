@@ -1,6 +1,7 @@
 from model import Cups
 from solver.solver import Solver
-
+from util import env
+from adbConnector.Connector import Connector
 # test data
 # 把试管抽象为一个特殊的栈(直接用数组来代替，因为数组就有append pop方法，将数组的尾部作为栈顶即试管顶部)
 # 将颜色抽象为数字
@@ -18,9 +19,19 @@ test_waters = [
     []
 ]
 
+envmanager = env.EnvManager()
+cups = Cups.Cups(test_waters)
+
+
+def initEnv():
+    if not envmanager.checkAdbEnv():
+        envmanager.setAdbEnv()
+    Connector.connect()
+
+
 if __name__ == '__main__':
-    # 创建cups模型对象实例
-    cups = Cups.Cups(test_waters)
+    # 初始化环境
+    initEnv()
 
     # 进行求解
     Solver.sort(cups)

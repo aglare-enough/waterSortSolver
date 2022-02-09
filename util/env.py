@@ -1,10 +1,18 @@
 import os
 import platform
+from adbConnector.Connector import Connector
+
+
 
 class EnvManager:
     def __init__(self):
         self.envdict = os.environ
         self.system = platform.system()
+
+    def init_env(self):
+        if not self.checkAdbEnv():
+            self.setAdbEnv()
+        Connector.connect()
 
     def checkAdbEnv(self):
         if self.envdict.get("PATH").count("adb") > 0:

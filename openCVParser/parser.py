@@ -102,13 +102,13 @@ class Parser:
 
 
 
-p = Parser(img_path="5.jpg")
-
-
-
-water_list, glass_list = p()
-
-print(water_list)
-print(glass_list)
+# p = Parser(img_path="5.jpg")
+#
+#
+#
+# water_list, glass_list = p()
+#
+# print(water_list)
+# print(glass_list)
 
 

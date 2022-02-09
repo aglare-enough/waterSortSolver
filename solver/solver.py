@@ -59,11 +59,12 @@ class Solver:
     # 类方法，用于输出答案
     @classmethod
     def output(cls, data):
-        cups = Cups(data)
+
         print(cls.res)
 
         # DEBUG模式下会输出每一步结束后的数组
         if cls.mode == "DEBUG":
+            cups = Cups(data)
             print('--------------------------------')
             print(data)
             print('--------------------------------')

@@ -2,6 +2,8 @@ import os
 import time
 
 
+img_path = "/img/cache.jpg"  # 请勿修改！！！！
+
 class Connector:
     def __init__(self):
         pass
@@ -29,5 +31,5 @@ class Connector:
     # screen capture
     @classmethod
     def screencap(cls):
-        os.popen(f"adb exec-out screencap -p > {os.path.abspath('../')}/img/cache.png")
-        print("screen image has been saved in cache.png")
+        os.popen("adb exec-out screencap -p > %s%s" % (os.path.abspath('.').replace('\\','/'),img_path))
+        print("screen image has been saved in cache.jpg")

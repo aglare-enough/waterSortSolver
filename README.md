@@ -90,4 +90,4 @@ opencv模块需要从该图片中分析获得每个试管中心对应在图中�
 
 ## 8. END
 
-最后感谢神犇代码贡献者@[LittlerLamb](https://github.com/LittlerLamb)
+最后感谢神犇代码贡献者[@LittlerLamb](https://github.com/LittlerLamb)
